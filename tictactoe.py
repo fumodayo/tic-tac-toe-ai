@@ -1,4 +1,5 @@
 import sys
+from tkinter import OFF
 import pygame
 import numpy as np
 
@@ -45,7 +46,18 @@ class Game:
     def draw_fig(self, row, col):
         if self.player == 1:
             # draw cross
-            pass
+            # decs line
+            start_decs = (col * SQSIZE + OFFSET, row * SQSIZE + OFFSET)
+            end_decs = (col * SQSIZE + SQSIZE - OFFSET,
+                        row * SQSIZE + SQSIZE - OFFSET)
+            pygame.draw.line(screen, CROSS_COLOR, start_decs,
+                             end_decs, CROSS_WIDTH)
+            # asc line
+            start_acs = (col * SQSIZE + OFFSET, row * SQSIZE + SQSIZE - OFFSET)
+            end_acs = (col * SQSIZE + SQSIZE - OFFSET,
+                       row * SQSIZE + OFFSET)
+            pygame.draw.line(screen, CROSS_COLOR, start_acs,
+                             end_acs, CROSS_WIDTH)
 
         elif self.player == 2:
             # draw circle
